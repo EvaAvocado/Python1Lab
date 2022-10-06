@@ -9,11 +9,14 @@ while not isChooseA:
     except ValueError:
         print("Вы ввели неправильно, введите целое число")
 
-if a % 3 == 0 and a % 5 == 0:
-    print("FizzBuzz")
-elif a % 3 == 0:
-    print("Fizz")
-elif a % 5 == 0:
-    print("Buzz")
-else:
-    print(a)
+print("| ", end="")
+
+for i in range(1, a + 1):
+    if i % 3 == 0 and i % 5 == 0:
+        print("FizzBuzz | ", end="")
+    elif i % 3 == 0:
+        print("Fizz | ", end="")
+    elif i % 5 == 0:
+        print("Buzz | ", end="")
+    else:
+        print(str(i) + " | ", end="")
