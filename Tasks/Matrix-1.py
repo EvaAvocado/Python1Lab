@@ -18,24 +18,15 @@ def enterMatrix():
 
 
 # Вычисляем определитель матрицы
-def getDeterminant(matrix, mul=1):
-    width = len(matrix)
-    if width == 1:
-        return mul * matrix[0][0]
-    else:
-        sign = -1
-        answer = 0
-        for i in range(width):
-            m = []
-            for j in range(1, width):
-                buff = []
-                for k in range(width):
-                    if k != i:
-                        buff.append(matrix[j][k])
-                m.append(buff)
-            sign *= -1
-            answer = answer + mul * getDeterminant(m, sign * matrix[0][i])
-    return answer
+def getDeterminant(matrix):
+    if len(matrix) == 2:
+        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+
+    determinant = 0
+    for c in range(len(matrix)):
+        determinant += ((-1) ** c) * matrix[0][c] * getDeterminant(getMinor(matrix, 0, c))
+
+    return determinant
 
 
 # Транспонирование
